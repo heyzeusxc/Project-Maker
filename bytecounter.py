@@ -1,36 +1,39 @@
+"""
+Import modules
+"""
 import os
 import sys
-import time
 
-root = os.sys.path[0] #sets root folder
-check = os.walk(root)	#creates list of all files and folders in root
-subcheck = os.listdir(root) #checks for subfolder structure made by projectmaker
+"""
+Set variables
+"""
+root = os.sys.path[0]
+check = os.walk(root)
+subcheck = os.listdir(root)
+bytes = 0
+subbytes1 = 0
+subbytes2 = 0
+subbytes3 = 0
+lastslash = root [::-1].find('/')
+project = root[::-1][:lastslash][::-1]
 
 print ''
-print '-----------------------------------------------------------------------------------------------'
+print '*' * 10
 print ''
-
-#time.sleep(1)
 
 print ''
 print 'Computing size of: ' + root
 print ''
 
-#time.sleep(2)
-
-bytes = 0
-subbytes1 = 0
-subbytes2 = 0
-subbytes3 = 0
-
-subcheck = os.listdir(root)
+"""
+Scan files, tallies size of project folder and first level of subfolders if set up using 'projectmaker.py'
+"""
 
 for x in check:
-	if len(x[2]) > 0: #checks if folders are found
-		for y in x[2]: #every file in a folder
+	if len(x[2]) > 0:
+		for y in x[2]:
 			print x[0] + '/' + y + ', ' + str(os.path.getsize(x[0] + '/' + y)) + ' bytes'
-			bytes += os.path.getsize(x[0] + '/' + y) #adds byte size
-#			time.sleep(0.25)
+			bytes += os.path.getsize(x[0] + '/' + y)
 
 for x in subcheck: #checks subfolders for folders made by projectmaker
 	if x == '01_Recording':
@@ -38,30 +41,28 @@ for x in subcheck: #checks subfolders for folders made by projectmaker
 		for x in check:
 			if len(x[2]) > 0: #checks if folders are found
 				for y in x[2]: #every file in a folder
-#					print x[0] + '/' + y + ', ' + str(os.path.getsize(x[0] + '/' + y)) + ' bytes'
-					subbytes1 += os.path.getsize(x[0] + '/' + y) #adds byte size
+					subbytes1 += os.path.getsize(x[0] + '/' + y)
 	if x == '02_Edit':
 		check = os.walk(root + '/' + x)
 		for x in check:
 			if len(x[2]) > 0: #checks if folders are found
 				for y in x[2]: #every file in a folder
-#					print x[0] + '/' + y + ', ' + str(os.path.getsize(x[0] + '/' + y)) + ' bytes'
-					subbytes2 += os.path.getsize(x[0] + '/' + y) #adds byte size
+					subbytes2 += os.path.getsize(x[0] + '/' + y)
 
 	if x == '03_Live':
 		check = os.walk(root + '/' + x)
 		for x in check:
 			if len(x[2]) > 0: #checks if folders are found
 				for y in x[2]: #every file in a folder
-#					print x[0] + '/' + y + ', ' + str(os.path.getsize(x[0] + '/' + y)) + ' bytes'
-					subbytes3 += os.path.getsize(x[0] + '/' + y) #adds byte size
+					subbytes3 += os.path.getsize(x[0] + '/' + y)
 
 print ''
 
-dout = open(root + '/' + 'datasize.txt','w') #creates .txt summarizing project and subfolder size
+"""
+Writes a .txt file using data found during scanning
+"""
 
-lastslash = root [::-1].find('/')
-project = root[::-1][:lastslash][::-1]
+dout = open(root + '/' + 'datasize.txt','w') #creates .txt summarizing project and subfolder size
 
 if 'C' in project:
 	firstc = project.find('C')
@@ -80,7 +81,6 @@ if 'C' in project:
 		dout.write(pnumb)
 		dout.write('\r')
 		dout.write('\r')
-		
 		print ''
 
 		print 'Project Title'
@@ -89,10 +89,7 @@ if 'C' in project:
 		dout.write('\r')
 		dout.write(ptitle)
 		dout.write('\r')
-
 		print ''
-
-#time.sleep(1)
 
 bytecount = 0
 bytecount1 = 0
@@ -142,8 +139,6 @@ if bytes != 0:
 		dout.write(str(bytes)[:bytecounter.find(',')] + '.' + str(bytes)[bytecounter.find(','):bytecounter.find(',') + 2] + ' GB')
 		dout.write('\r')
 
-#time.sleep(0.5)
-
 if subbytes1 != 0:
 	dout.write('\r')
 	print ''
@@ -166,8 +161,6 @@ if subbytes1 != 0:
 		print str(subbytes1)[:bytecounter1.find(',')] + '.' + str(subbytes1)[bytecounter1.find(','):bytecounter1.find(',') + 2] + ' GB'
 		dout.write(str(subbytes1)[:bytecounter1.find(',')] + '.' + str(subbytes1)[bytecounter1.find(','):bytecounter1.find(',') + 2] + ' GB')
 		dout.write('\r')
-
-#time.sleep(0.5)
 
 if subbytes2 != 0:
 	dout.write('\r')
@@ -192,8 +185,6 @@ if subbytes2 != 0:
 		dout.write(str(subbytes2)[:bytecounter2.find(',')] + '.' + str(subbytes2)[bytecounter2.find(','):bytecounter2.find(',') + 2] + ' GB')
 		dout.write('\r')
 
-#time.sleep(0.5)
-
 if subbytes3 != 0:
 	dout.write('\r')
 	print ''
@@ -217,17 +208,10 @@ if subbytes3 != 0:
 		dout.write(str(subbytes3)[:bytecounter3.find(',')] + '.' + str(subbytes3)[bytecounter3.find(','):bytecounter3.find(',') + 2] + ' GB')
 		dout.write('\r')
 
-#time.sleep(0.5)
-
 print''
 print 'Creating ' + root + '/' + 'datasize.txt'
-
-#time.sleep(1.5)
 
 dout.close()
 
 print ''
-print '-----------------------------------------------------------------------------------------------'
-print ''
-
-#time.sleep(1)
+print '*' * 10

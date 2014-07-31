@@ -13,7 +13,8 @@ date in the "02_Edit/Exports" folder.
 'bytecounter.py' calculates creates a .txt file of number of bytes the
 project folder and the first level of subfolders use.
 
-'datafinder.py' should be put in the drive of wherever multiple
+'datafinder 2.py' should be put in the drive of wherever multiple
 projects are placed.  This searches each project folder for the
-"datasize.txt", and creates and entry for each one in a .csv file named
-after the drive.
+"datasize.txt", and creates and entry for each one along with any folders and loose files in a .csv file named after the drive.
+
+'datacompiler.py' 

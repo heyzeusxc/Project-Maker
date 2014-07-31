@@ -1,34 +1,25 @@
+"""
+Import modules
+"""
 import sys
 import os
 import time
 
-
 print ''
-print '-----------------------------------------------------------------------------------------------'
+print '*' * 10
 print ''
-
-#time.sleep(1)
 
 print 'Folders will be made in "' + str(os.sys.path[0]) + u'\033[1m%s\033[0m' %  '/***PROJECT NUMBER - TITLE***' + '"'
 
 print ''
 
-#time.sleep(1)
-
-pnumber = raw_input('Enter project number: ') #sets project folder name
-
+"""
+Set variables
+"""
+pnumber = raw_input('Enter project number: ')
 pnumber = pnumber.upper()
-
-pdesc = raw_input('Enter a project title: ') #sets project folder description
-
-#time.sleep(1)
-
-print ''
-print 'Creating "' + str(os.sys.path[0]) + '/' + pnumber + ' - ' +  pdesc + '"'
-print ''
-
-pdirect = os.sys.path[0] + '/' + pnumber  + ' - ' + pdesc #sets folder to be made
-
+pdesc = raw_input('Enter a project title: ')
+pdirect = os.sys.path[0] + '/' + pnumber  + ' - ' + pdesc
 i = 0
 s = 0
 editroot = pdirect + '/02_Edit'
@@ -36,25 +27,28 @@ editsub = ['/Graphics','/Audio','/Exports','/Notes','/Exports/datestamper']
 lfolder = '/03_Live'
 uinp = ['y','ye','yes','n','no']
 
-os.mkdir(pdirect) #creates folder
+print ''
+print 'Creating "' + str(os.sys.path[0]) + '/' + pnumber + ' - ' +  pdesc + '"'
+print ''
 
-#time.sleep(1)
+os.mkdir(pdirect)
+
+"""
+Start sequence for user interaction
+"""
 
 cams = raw_input('How many cameras/inputs were used for this project or shoot? (Limit of eight (8)): ') #sets number of camera folders to be made if needed
 
 while cams.isdigit() != True:
 	print 'Invalid input'
 	print ''
-#	time.sleep(1)
 	cams = raw_input('How many cameras/inputs were used for this project or shoot? (Limit of eight (8)): ')
 
 else:
 	cams = int(cams)
-#	time.sleep(1)
 	print str(cams) + ' cameras/inputs used'
 
 print ''
-#time.sleep(1)
 
 streamcheck = raw_input('Will there be a live stream for this project? (y/n): ') #sets if '03_Live' folder will be made, won't if input is 0
 
@@ -81,7 +75,6 @@ else:
 			print 'WTF MATE'
 
 print ''
-#time.sleep(1)
 
 if cams != 0:	
 	scount = raw_input('How long was the shoot in terms of days? (Limit of seven (7)): ') #creates day subfolders in '/01_Recording', doesn't if == 1
@@ -145,21 +138,18 @@ if cams != 0:
 					break
 
 
-#print editroot
-
 os.mkdir(editroot) #creates '/02_Edit' folder
 
 for x in editsub:
 	os.mkdir(editroot + x) #creates editing subfolders (graphics, audio, exports, etc.)
-	#print editroot + x
-
-#time.sleep(1)
 
 print ''
 print 'Project folders have been created.'
 print ''
 
-#time.sleep(0.5)
+"""
+Create additional scripts for the new project folder
+"""
 
 print 'Making "' + str(os.sys.path[0]) + u'\033[1m%s\033[0m' %  '/bytecounter.py' + '"'
 
@@ -178,5 +168,5 @@ for x in stamper:
 	newstamp.write(x)
 
 print ''
-print '-----------------------------------------------------------------------------------------------'
+print '*' * 10
 print ''
