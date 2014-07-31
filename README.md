@@ -17,4 +17,4 @@ project folder and the first level of subfolders use.
 projects are placed.  This searches each project folder for the
 "datasize.txt", and creates and entry for each one along with any folders and loose files in a .csv file named after the drive.
 
-'datacompiler.py' 
+'datacompiler.py' scans all the .csv files made by 'datafinder 2.py' and creates and master list of all .csv files and data.
