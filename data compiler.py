@@ -1,12 +1,12 @@
 """
-Import modules
+Import os, sys, and csv
 """
 import os
 import sys
 import csv
 
 """
-Set variables
+Set standard variables
 """
 
 columns = ['Project Number','Project Title','Total Size','"01_Recording" Size','"02_Edit" Size','"03_Live" Size','Folder Name','Drive']
@@ -25,11 +25,6 @@ with open(os.sys.path[0] + '/' + 'Archived Data.csv', 'wb') as master:
 	typer = csv.writer(master)
 	typer.writerow(columns)
 
-
-"""
-Scans for other .csv files
-"""
-
 	for x in os.listdir(os.sys.path[0]):
 		if x[0] == '.':
 			pass
@@ -39,13 +34,9 @@ Scans for other .csv files
 			print x[:x.find(' drivedata.csv')]
 			print '*' * 10
 
-"""
-Opens the .csv and reads it, writing data to the master .csv file
-"""
-
 			with open(os.sys.path[0] + '/' + x, 'r') as file:
 				reader = csv.reader(file)
-				typer.writerow('*')
+				typer.writerow('*' * 8)
 				for y in reader:
 					if 'Project Number' in y:
 						pass
