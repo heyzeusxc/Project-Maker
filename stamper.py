@@ -1,5 +1,5 @@
 """
-Import modules
+Import os, sys, datetime, and shutil.
 """
 import sys
 import os
@@ -7,18 +7,23 @@ import datetime
 import shutil
 
 """
-Set variables
+Set variables and checks if the 'datestamper' folder is found.
 """
 
 dlist = os.walk(sys.path[0]).next()[1]
 today = datetime.date.today()
+
+if str(today) in dlist:
+	pass
+else:
+	os.mkdir(sys.path[0] + '/' + str(today))
+
 target = os.listdir(os.sys.path[0]).index(str(today))
 send = os.sys.path[0] + '/' + os.listdir(os.sys.path[0])[target]
 stampinhere = sys.path[0] + '/' + 'datestamper'
-stamplist = os.listdir(stampinhere)
 
 """
-Looks for 'datestamper' folder, scans files if found, renames and moves if appropriate
+Looks in 'datestamper' folder, scans files if found, renames and moves if appropriate.
 """
 
 if 'datestamper' in dlist:
@@ -26,11 +31,7 @@ if 'datestamper' in dlist:
 	print 'Datestamper folder found!'
 	print ''
 
-	for f in dlist:
-		if str(datetime.date.today()) in f:
-			break
-		else:
-			os.mkdir(sys.path[0] + '/' + str(today))
+	stamplist = os.listdir(stampinhere)
 
 	for m in stamplist:
 		if m[0] == '.':
@@ -61,3 +62,4 @@ else:
 	print "datestamper folder not found! Creating a new one, please place files you wish to stamp with today's date in there and rerun the application."
 	print '*' * 10
 	os.mkdir(sys.path[0] + '/' + 'datestamper')
+
