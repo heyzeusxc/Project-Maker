@@ -56,10 +56,6 @@ if 'datestamper' in dlist:
 
 	print '*' * 10
 
-"""
-Creates 'datestamper' folder if not found
-"""
-
 else:
 	print '*' * 10
 	print "datestamper folder not found! Creating a new one, please place files you wish to stamp with today's date in there and rerun the application."
