@@ -8,7 +8,7 @@ for how my place of work categorizes projects.
 
 'stamper.py' will put the current date on any files in the
 "datestamper" folder as well as create a new blank folder for the day's
-date in the "02_Edit/Exports" folder.
+date in the "02_Edit/Exports" folder and moves the renamed files there.
 
 'bytecounter.py' calculates creates a .txt file of number of bytes the
 project folder and the first level of subfolders use.
